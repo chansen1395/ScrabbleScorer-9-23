@@ -1,38 +1,22 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
-using RPS.Models;
+using Scorer.Models;
 using System;
 
-namespace RPS.Tests
+namespace Scorer.Tests
 {
   [TestClass]
   public class GameTests
   {
     [TestMethod]
-    public void CheckWinner_CheckDraw_Draw()
+    public void ScoreCalc_CheckAScore_1()
     {
-      Assert.AreEqual("Draw", Game.CheckWinner("rock", "rock"));
-    }
-    
-    [TestMethod]
-    public void CheckWinner_Choice1BeatsChoice2_Player1()
-    {
-      Assert.AreEqual("Player 1", Game.CheckWinner("rock", "scissors"));
-      Assert.AreEqual("Player 1", Game.CheckWinner("scissors", "paper"));
-      Assert.AreEqual("Player 1", Game.CheckWinner("paper", "rock"));
+      Assert.AreEqual(1, Game.ScoreCalc("a"));
     }
     [TestMethod]
-    public void CheckWinner_Choice2BeatsChoice1_Player2()
+    public void ScoreCalc_CheckZScore_10()
     {
-      Assert.AreEqual("Player 2", Game.CheckWinner("paper", "scissors"));
-      Assert.AreEqual("Player 2", Game.CheckWinner("scissors", "rock"));
-      Assert.AreEqual("Player 2", Game.CheckWinner("rock", "paper"));
-    }
-    
-    [TestMethod]
-    public void CPUPlayer_ReturnsNumber_String()
-    {
-      Assert.IsTrue(Game.CPUPlayer() == "rock" || Game.CPUPlayer() == "scissors" || Game.CPUPlayer() == "paper");
+      Assert.AreEqual(10, Game.ScoreCalc("q"));
     }
   }
 }
