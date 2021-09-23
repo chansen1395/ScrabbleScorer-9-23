@@ -14,48 +14,50 @@ namespace Scorer.Models
   {
     public static int ScoreCalc(string word)
     {
-      string wordLower = word.ToLower();
-      string[] onePoint = {"a", "e", "i", "o", "u", "l", "n", "r", "s", "t"};
-      string[] twoPoint = {"d", "g"};
-      string[] threePoint = {"b", "c", "m", "p"};
-      string[] fourPoint = {"f", "h", "v", "w", "y"};
-      string[] fivePoint = {"k"};
-      string[] eightPoint = {"j", "x"};
-      string[] tenPoint = {"q", "z"};
+      string inputWord = word.ToLower();
+      char[] wordLower = inputWord.ToCharArray();
+      char[] onePoint = {'a', 'e', 'i', 'o', 'u', 'l', 'n', 'r', 's', 't'};
+      char[] twoPoint = {'d', 'g'};
+      char[] threePoint = {'b', 'c', 'm', 'p'};
+      char[] fourPoint = {'f', 'h', 'v', 'w', 'y'};
+      char[] fivePoint = {'k'};
+      char[] eightPoint = {'j', 'x'};
+      char[] tenPoint = {'q', 'z'};
       int totalScore = 0;
 
-      if (Array.Exists(onePoint, element => element == wordLower))
-      {
-        totalScore += 1;
-      }
-      else if (Array.Exists(twoPoint, element => element == wordLower))
-      {
-        totalScore += 2;
-      }
-      else if (Array.Exists(threePoint, element => element == wordLower))
-      {
-        totalScore += 3;
-      }
-      else if (Array.Exists(fourPoint, element => element == wordLower))
-      {
-        totalScore += 4;
-      }
-      else if (Array.Exists(fivePoint, element => element == wordLower))
-      {
-        totalScore += 5;
-      }
-      else if (Array.Exists(eightPoint, element => element == wordLower))
-      {
-        totalScore += 8;
-      }
-      else if (Array.Exists(tenPoint, element => element == wordLower))
-      {
-        totalScore += 10;
-      }
-      else 
-      {
-        totalScore += 0;
-      }
+      for (int i = 0; i < inputWord.Length; i++)
+        if (Array.Exists(onePoint, element => element == wordLower[i]))
+        {
+          totalScore += 1;
+        }
+        else if (Array.Exists(twoPoint, element => element == wordLower[i]))
+        {
+          totalScore += 2;
+        }
+        else if (Array.Exists(threePoint, element => element == wordLower[i]))
+        {
+          totalScore += 3;
+        }
+        else if (Array.Exists(fourPoint, element => element == wordLower[i]))
+        {
+          totalScore += 4;
+        }
+        else if (Array.Exists(fivePoint, element => element == wordLower[i]))
+        {
+          totalScore += 5;
+        }
+        else if (Array.Exists(eightPoint, element => element == wordLower[i]))
+        {
+          totalScore += 8;
+        }
+        else if (Array.Exists(tenPoint, element => element == wordLower[i]))
+        {
+          totalScore += 10;
+        }
+        else 
+        {
+          totalScore += 0;
+        }
     return totalScore;
     }
   }

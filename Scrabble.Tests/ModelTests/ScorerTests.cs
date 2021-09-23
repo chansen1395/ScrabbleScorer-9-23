@@ -18,5 +18,20 @@ namespace Scorer.Tests
     {
       Assert.AreEqual(10, Game.ScoreCalc("q"));
     }
+    [TestMethod]
+    public void ScoreCalc_CheckABCScoreWithCapitals_7()
+    {
+      Assert.AreEqual(7, Game.ScoreCalc("aBc"));
+    }
+    [TestMethod]
+    public void ScoreCalc_CheckBlankScore_0()
+    {
+      Assert.AreEqual(0, Game.ScoreCalc(""));
+    }
+    [TestMethod]
+    public void ScoreCalc_CheckSpecialCharactersScore_0()
+    {
+      Assert.AreEqual(0, Game.ScoreCalc("/.,"));
+    }
   }
 }
